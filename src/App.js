@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import { LoginProvider } from "./components/context/contextStateLogin";
+import { ShortUrl } from "./components/input-short-url/ShortUrl";
+import { Menu } from "./components/menu/Menu";
+import { Working } from "./components/working/Working";
+import { Statistic } from './components/statistic/Statistic';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <LoginProvider>
+        <Menu />
+        <Working />
+        <ShortUrl />
+        <Statistic />
+      </LoginProvider>
+    </>);
 }
 
 export default App;
