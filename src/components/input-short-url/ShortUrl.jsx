@@ -53,12 +53,13 @@ export const ShortUrl = () => {
                                 body: JSON.stringify(data.result),
                             })
                                 .then(response => response.json())
-                                .catch(error => console.error('Error:', error))
+                                .then(response => setArrayLoggedShortUrl(prevState => [...prevState, data.result]))
+                                .catch(error => console.error('Error -->', error))
                         }
                     }
                 })
                 .catch(error => {
-                    console.log(error);
+                    console.log('Error --->', error);
                 })
                 .finally(() => {
                     setIsLoading(false);
@@ -84,13 +85,13 @@ export const ShortUrl = () => {
                 })
                 .catch(error => {
                     console.log(error);
-                })
+                });
+            setArrayLogOutShortUrl([]);
         }
     }, [inputValue, isLogin]);
-    //ustawiam tablicę którą przekazuje do komponentu: ShowLoggedShortUrl - w JSONie tablica się zapisuje
 
     return (
-        <main>
+        <main className='main'>
             <div>
                 <form>
                     <label htmlFor="urlValue" >Shorten Your link here...</label>

@@ -77,6 +77,58 @@
       "full_share_link": "https://shrtco.de/share/c8JTpe",
       "original_link": "http://google.pl",
       "id": 6
+    },
+    {
+      "code": "3P6VZK",
+      "short_link": "shrtco.de/3P6VZK",
+      "full_short_link": "https://shrtco.de/3P6VZK",
+      "short_link2": "9qr.de/3P6VZK",
+      "full_short_link2": "https://9qr.de/3P6VZK",
+      "short_link3": "shiny.link/3P6VZK",
+      "full_short_link3": "https://shiny.link/3P6VZK",
+      "share_link": "shrtco.de/share/3P6VZK",
+      "full_share_link": "https://shrtco.de/share/3P6VZK",
+      "original_link": "http://yahoo.com",
+      "id": 7
+    },
+    {
+      "code": "fuVv7A",
+      "short_link": "shrtco.de/fuVv7A",
+      "full_short_link": "https://shrtco.de/fuVv7A",
+      "short_link2": "9qr.de/fuVv7A",
+      "full_short_link2": "https://9qr.de/fuVv7A",
+      "short_link3": "shiny.link/fuVv7A",
+      "full_short_link3": "https://shiny.link/fuVv7A",
+      "share_link": "shrtco.de/share/fuVv7A",
+      "full_share_link": "https://shrtco.de/share/fuVv7A",
+      "original_link": "http://youtube.com",
+      "id": 8
+    },
+    {
+      "code": "c8JTpe",
+      "short_link": "shrtco.de/c8JTpe",
+      "full_short_link": "https://shrtco.de/c8JTpe",
+      "short_link2": "9qr.de/c8JTpe",
+      "full_short_link2": "https://9qr.de/c8JTpe",
+      "short_link3": "shiny.link/c8JTpe",
+      "full_short_link3": "https://shiny.link/c8JTpe",
+      "share_link": "shrtco.de/share/c8JTpe",
+      "full_share_link": "https://shrtco.de/share/c8JTpe",
+      "original_link": "http://google.pl",
+      "id": 9
+    },
+    {
+      "code": "zXY76d",
+      "short_link": "shrtco.de/zXY76d",
+      "full_short_link": "https://shrtco.de/zXY76d",
+      "short_link2": "9qr.de/zXY76d",
+      "full_short_link2": "https://9qr.de/zXY76d",
+      "short_link3": "shiny.link/zXY76d",
+      "full_short_link3": "https://shiny.link/zXY76d",
+      "share_link": "shrtco.de/share/zXY76d",
+      "full_share_link": "https://shrtco.de/share/zXY76d",
+      "original_link": "http://otomoto.pl",
+      "id": 10
     }
   ]
 }

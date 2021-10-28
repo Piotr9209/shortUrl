@@ -3,6 +3,8 @@ import { ShortUrl } from "./components/input-short-url/ShortUrl";
 import { Menu } from "./components/menu/Menu";
 import { Working } from "./components/working/Working";
 import { Statistic } from './components/statistic/Statistic';
+import { Footer } from './components/footer/Footer';
+import './sass/App.scss';
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
         <Working />
         <ShortUrl />
         <Statistic />
+        <Footer />
       </LoginProvider>
     </>);
 }

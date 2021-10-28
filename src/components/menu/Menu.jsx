@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { LoginContext } from '../context/contextStateLogin';
 
-
+import './menu.scss'
 export const Menu = () => {
     const { isLogin, toggleLogin } = useContext(LoginContext);
 
@@ -10,20 +10,18 @@ export const Menu = () => {
         toggleLogin();
     };
     return (
-        <nav>
-            <div>
-                <p>Shortly</p>
-            </div>
-            <div>
-                <ul>
-                    <li>Features</li>
-                    <li>Pricing</li>
-                    <li>Resources</li>
-                </ul>
-            </div>
-            <div>
-                <button onClick={handleClickLogin}>{isLogin ? 'log out' : 'log in'}</button>
-            </div>
+
+        <nav className='nav'>
+            <a href="#shortly" className='logo'>Shortly</a>
+            <input class="menu-btn" type="checkbox" id="menu-btn" />
+            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            <ul className='menu'>
+                <li><a href="#Features">Features</a></li>
+                <li><a href="#Pricing">Pricing</a></li>
+                <li><a href="#Resources">Resources</a></li>
+                <li>
+                    <a onClick={handleClickLogin}>{isLogin ? 'log out' : 'log in'}</a></li>
+            </ul>
         </nav>
     )
 }
