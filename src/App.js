@@ -8,15 +8,14 @@ import './sass/App.scss';
 
 function App() {
   return (
-    <>
-      <LoginProvider>
-        <Menu />
-        <Working />
-        <ShortUrl />
-        <Statistic />
-        <Footer />
-      </LoginProvider>
-    </>);
+    <LoginProvider>
+      <Menu />
+      <Working />
+      <ShortUrl />
+      <Statistic />
+      <Footer />
+    </LoginProvider>
+  );
 }
 
 export default App;
