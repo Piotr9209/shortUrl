@@ -2,8 +2,8 @@ import React from 'react';
 import iconBrand from '../../images/icon-brand-recognition.svg';
 import iconRecords from '../../images/icon-detailed-records.svg';
 import iconCustomizable from '../../images/icon-fully-customizable.svg';
-export const Statistic = () => {
 
+export const Statistic = () => {
     return (
         <article className='article'>
             <div>

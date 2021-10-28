@@ -27,5 +27,7 @@ function LoginProvider({ children }) {
     );
 };
 
-export { LoginContext, LoginProvider };
+const useLoginContext = () => LoginContext()
+
+export { LoginContext, LoginProvider, useLoginContext };
 

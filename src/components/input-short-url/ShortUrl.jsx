@@ -1,49 +1,45 @@
-import React, { useState, useCallback, useEffect, useContext } from 'react';
+import React, { useState, useCallback, useEffect, useContext, useRef } from 'react';
 import { LoginContext } from '../context/contextStateLogin';
 import { ShowLoggedShortUrl } from '../show-logged-short-url/ShowLoggedShortUrl';
 import { ShowLogOutShortUrl } from '../show-log-out-short-url/ShowLogOutShortUrl';
 
+const errorLabels = {
+    'empty': 'Please add a link',
+    'wrong': 'URL is incorrect'
+}
+
+const VALID_URL_REGEXP = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/
+
 
 export const ShortUrl = () => {
-    const [inputValue, setInputValue] = useState('');
-    const [isEmptyUrl, setIsEmptyUrl] = useState(false);
-    const [isWrongUrl, setIsWrongUrl] = useState(false);
+    const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [arrayLoggedShortUrl, setArrayLoggedShortUrl] = useState([]);
-    const [arrayLogOutShortUrl, setArrayLogOutShortUrl] = useState([]);
+    const [shortUrls, setShortUrls] = useState([]);
+    const inputRef = useRef(null)
 
     const { isLogin, isShowLoggedShortUrl, isShowLogOutShortUrl } = useContext(LoginContext);
 
-    const handleChangeInput = (e) => {
-        e.preventDefault();
-        setInputValue(e.target.value);
-    };
-
-    const messageValid = 'Please add a link';
-    const messageWrongUrl = 'is wrong Url';
+    console.log('render')
 
     const handleClickButton = useCallback((e) => {
         e.preventDefault();
-        const validURL = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+        const inputValue = inputRef.current.value
         const fetchURL = 'https://api.shrtco.de/v2/shorten?url=';
         if (inputValue === '') {
-            setIsEmptyUrl(true);
-            setIsWrongUrl(false);
+            setError('empty')
             return;
         };
-
-        if (validURL.test(inputValue)) {
+        inputRef.current.value = ''
+        if (VALID_URL_REGEXP.test(inputValue)) {
             const fullUrl = fetchURL + inputValue;
-            setIsEmptyUrl(false);
-            setIsWrongUrl(false);
-            setInputValue('');
+            setError(null)
             setIsLoading(true);
             fetch(fullUrl)
                 .then(response => response.json())
                 .then(data => {
                     if (data.ok) {
                         if (isLogin === false) {
-                            setArrayLogOutShortUrl(prevState => [...prevState, data.result]);
+                            setShortUrls(prevState => [...prevState, data.result]);
                         } else {
                             fetch('http://localhost:8000/shortUrl/', {
                                 method: 'POST',
@@ -53,7 +49,7 @@ export const ShortUrl = () => {
                                 body: JSON.stringify(data.result),
                             })
                                 .then(response => response.json())
-                                .then(response => setArrayLoggedShortUrl(prevState => [...prevState, data.result]))
+                                .then(response => setShortUrls(prevState => [...prevState, data.result]))
                                 .catch(error => console.error('Error -->', error))
                         }
                     }
@@ -66,43 +62,36 @@ export const ShortUrl = () => {
                 });
 
         } else {
-            setIsEmptyUrl(false);
-            setIsWrongUrl(true);
-            setInputValue('');
+            setError('wrong')
         }
-    }, [inputValue]);
-
-    useEffect(() => {
-        setInputValue(inputValue);
-    }, [inputValue]);
+    }, []);
 
     useEffect(() => {
         if (isLogin) {
             fetch('http://localhost:8000/shortUrl/')
                 .then(response => response.json())
                 .then(data => {
-                    setArrayLoggedShortUrl(data);
+                    setShortUrls(data);
                 })
                 .catch(error => {
                     console.log(error);
                 });
-            setArrayLogOutShortUrl([]);
+                setShortUrls([]);
         }
-    }, [inputValue, isLogin]);
+    }, [isLogin]);
 
     return (
         <main className='main'>
             <div>
                 <form>
                     <label htmlFor="urlValue" >Shorten Your link here...</label>
-                    <input id='urlValue' type="text" onChange={handleChangeInput} placeholder='shorten your link' value={inputValue} />
+                    <input id='urlValue' ref={inputRef} type="text" placeholder='shorten your link' />
                     <button onClick={handleClickButton}>Shorten It!</button>
                 </form>
-                <h1>{isEmptyUrl ? messageValid : null}</h1>
-                <h1>{isWrongUrl ? messageWrongUrl : null}</h1>
+                {error && <h1>{errorLabels[error]}</h1>}
             </div>
-            {isShowLoggedShortUrl && <ShowLoggedShortUrl arrayLoggedShortUrl={arrayLoggedShortUrl} />}
-            {isShowLogOutShortUrl && <ShowLogOutShortUrl arrayLogOutShortUrl={arrayLogOutShortUrl} />}
+            {isShowLoggedShortUrl && <ShowLoggedShortUrl arrayLoggedShortUrl={shortUrls} />}
+            {isShowLogOutShortUrl && <ShowLogOutShortUrl arrayLogOutShortUrl={shortUrls} />}
         </main>
 
     )
