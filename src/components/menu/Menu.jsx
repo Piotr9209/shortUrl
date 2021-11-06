@@ -13,8 +13,8 @@ export const Menu = () => {
 
         <nav className='nav'>
             <a href="#shortly" className='logo'>Shortly</a>
-            <input class="menu-btn" type="checkbox" id="menu-btn" />
-            <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+            <input className="menu-btn" type="checkbox" id="menu-btn" />
+            <label className="menu-icon" for="menu-btn"><span className="navicon"></span></label>
             <ul className='menu'>
                 <li><a href="#Features">Features</a></li>
                 <li><a href="#Pricing">Pricing</a></li>

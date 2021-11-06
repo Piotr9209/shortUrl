@@ -3,6 +3,7 @@ import { LoginContext } from '../context/contextStateLogin';
 import { ShowLoggedShortUrl } from '../show-logged-short-url/ShowLoggedShortUrl';
 import { ShowLogOutShortUrl } from '../show-log-out-short-url/ShowLogOutShortUrl';
 
+import './shortUrl.scss';
 
 export const ShortUrl = () => {
     const [inputValue, setInputValue] = useState('');
@@ -94,12 +95,15 @@ export const ShortUrl = () => {
         <main className='main'>
             <div>
                 <form>
-                    <label htmlFor="urlValue" >Shorten Your link here...</label>
                     <input id='urlValue' type="text" onChange={handleChangeInput} placeholder='shorten your link' value={inputValue} />
-                    <button onClick={handleClickButton}>Shorten It!</button>
+                    <div><button onClick={handleClickButton}>Shorten It!</button></div>
+                    <div className='validMessage'>
+                        {isEmptyUrl ? <p>{messageValid}</p> : null}
+                        {isWrongUrl ? <p>{messageWrongUrl}</p> : null}
+                    </div>
                 </form>
-                <h1>{isEmptyUrl ? messageValid : null}</h1>
-                <h1>{isWrongUrl ? messageWrongUrl : null}</h1>
+
+
             </div>
             {isShowLoggedShortUrl && <ShowLoggedShortUrl arrayLoggedShortUrl={arrayLoggedShortUrl} />}
             {isShowLogOutShortUrl && <ShowLogOutShortUrl arrayLogOutShortUrl={arrayLogOutShortUrl} />}

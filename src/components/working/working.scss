@@ -1,0 +1,66 @@
+.section {
+    max-width: 1440px;
+    margin-top: 10px;
+    div {
+        padding: 20px 20px;
+        @media screen and (min-width: 900px) {
+            padding: 0 20px;
+        }
+        &:first-of-type {
+            @media screen and (min-width: 900px) {
+                margin-top: 30px;
+            }
+        }
+        img {
+            width: 100%;
+        }
+        &:last-of-type {
+            @media screen and (min-width: 900px) {
+                margin-top: 50px;
+            }
+            margin-top: 10px;
+            font-style: normal;
+            text-align: center;
+            h1 {
+                font-weight: 700;
+                font-size: 42px;
+                line-height: 48px;
+                letter-spacing: -1.05px;
+            }
+            p {
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 30px;
+                letter-spacing: 0.12px;
+            }
+            div {
+                height: 50px;
+                width: 200px;
+                background-color: #2bd0d0;
+                margin: 10px auto;
+                border-radius: 25px;
+                padding: 0 0;
+                &:hover {
+                    background-color: #9ae3e3;
+                }
+                a {
+                    font-size: 20px;
+                    font-style: normal;
+                    font-weight: 700;
+                    line-height: 30px;
+                    line-height: 50px;
+                    text-decoration: none;
+                    color: #fff;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .section {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+}

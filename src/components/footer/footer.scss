@@ -1,0 +1,105 @@
+.footer {
+    margin: 30px 20px 0;
+    width: 95%;
+
+    .boostLinks {
+        height: 250px;
+        width: 100%;
+        background: linear-gradient(177deg, black 0%, #552a55 27%, #4b3f6b 28%, #4b3f6b 100%);
+        p {
+            padding-top: 60px;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-style: normal;
+            line-height: 48px;
+            letter-spacing: -0.7px;
+            font-weight: 700;
+            text-align: center;
+            color: #ffffff;
+            z-index: 1;
+        }
+        button {
+            height: 60px;
+            width: 200px;
+            margin-left: calc(50% - 100px);
+            margin-right: calc(50% - 100px);
+            border: none;
+            border-radius: 35px;
+            background-color: #2bd0d0;
+            font-size: 20px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 60px;
+            text-align: center;
+            color: #ffffff;
+        }
+    }
+
+    .shortly {
+        height: calc(100% + 10px);
+        width: 100%;
+        background: #232127;
+        text-align: center;
+        @media screen and (min-width: 900px) {
+            display: flex;
+            flex-direction: row;
+            text-align: left;
+        }
+        div {
+            @media screen and (min-width: 900px) {
+                margin-top: 30px;
+                margin-right: 32px;
+                width: 11%;
+            }
+            &:first-of-type {
+                @media screen and (min-width: 900px) {
+                    width: 30%;
+                    margin-left: 50px;
+                    margin-right: 0;
+                }
+            }
+            &:last-of-type {
+                @media screen and (min-width: 900px) {
+                    margin-top: 52px;
+                    margin-right: 10px;
+                    width: auto;
+                }
+            }
+        }
+        p {
+            margin: 0;
+            padding-top: 25px;
+            font-size: 28px;
+            font-weight: 700;
+            font-style: normal;
+            color: #ffffff;
+        }
+        ul {
+            padding: 0;
+            list-style-type: none;
+            font-style: normal;
+
+            .headerLi {
+                margin: 30px auto;
+                font-size: 18px;
+                font-weight: 700;
+                line-height: 24px;
+                letter-spacing: -0.25px;
+                color: #ffffff;
+            }
+            li {
+                margin: 12px auto;
+                font-size: 15px;
+                font-weight: 500;
+                line-height: 22.5px;
+                letter-spacing: -0.23px;
+            }
+        }
+        i {
+            display: inline-block;
+            text-align: center;
+            margin: 10px 8px 20px 8px;
+        }
+    }
+}
